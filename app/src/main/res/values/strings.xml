@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">App</string>
+    <string name="make_an_order">Make an order</string>
+    <string name="dialog_title">Items available in a shop</string>
+    <string name="ok_label">OK</string>
+    <string name="dismiss_label">Cancelar</string>
+    <string name="clear_all_label">Limpar</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="hello_world">Hello World!</string>
+
+    <string-array name="shopping_item">
+        <item>Onion</item>
+        <item>Sausage</item>
+        <item>Milk</item>
+        <item>Garlic</item>
+        <item>Beef</item>
+        <item>Veggies</item>
+        <item>Olive</item>
+        <item>Cheese</item>
+        <item>Tuna</item>
+        <item>Mushrooms</item>
+    </string-array>
+
+
+    <string name="delete_view">Delete clicked view</string>
+    <string name="more_view">Increment clicked view</string>
+
+    <string name="main_button_linear_vertical" translatable="false">Vertical list</string>
+    <string name="main_button_linear_horizontal" translatable="false">Horizontal list</string>
+    <string name="main_button_grid" translatable="false">Grid</string>
+    <string name="main_button_staggered" translatable="false">staggered_grid</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_teste_menu_flutuante">TesteMenuFlutuanteActivity</string>
+    <string name="title_activity_teste_teste_teste">TesteTesteTesteActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_menu_principal">APP</string>
+
+
+
+
+
+</resources>

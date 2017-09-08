@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="CREATE_TABLE_IF_NOT_EXISTS_TABELA_USUARIO">
+        CREATE TABLE IF NOT EXISTS TABELA_USUARIO
+        (
+            ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            NOME VARCHAR(50) NOT NULL,
+            EMAIL VARCHAR(40) NOT NULL,
+            DDI VARCHAR(2) NOT NULL,
+            DDD VARCHAR(2) NOT NULL,
+            NUMERO_CELULAR VARCHAR(9) NOT NULL
+        );
+    </string>
+
+    <string name="CREATE_TABLE_IF_NOT_EXISTS_TABELA_RECEITAS">
+        CREATE TABLE IF NOT EXISTS TABELA_RECEITAS
+        (
+            ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            NOME VARCHAR(50) NOT NULL
+        );
+    </string>
+
+    <string name="CREATE_TABLE_IF_NOT_EXISTS_TABELA_INGREDIENTES">
+        CREATE TABLE IF NOT EXISTS TABELA_INGREDIENTES
+        (
+            ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            ID_RECEITA INTEGER NOT NULL,
+            NOME VARCHAR(50) NOT NULL,
+            QUANTIDADE INTEGER NOT NULL,
+            UNIDADE_MEDIDA VARCHAR(2) NOT NULL
+        );
+    </string>
+
+</resources>
