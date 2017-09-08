@@ -2,8 +2,10 @@ package com.example.yuri.app.activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +31,7 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
@@ -56,8 +59,6 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -90,6 +91,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
         mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
         mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
         mSlidingTabLayout.setViewPager(mViewPager);
+
     }
 
     private ArrayList<Search> initData() {
@@ -137,8 +139,6 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     private void chamarBanco() {
 
-
-
         Usuario usuario2 = new Usuario("Wesley", "email@email.com", 55, 44, 996222010);
         Log.i("142: ","Insert 1");
         Usuario usuario3 = new Usuario("Ramos", "email@email.com", 55, 44, 996222010);
@@ -185,7 +185,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
 
     }
 
-    private void abrirDialogAdicionar(){
+    public void abrirDialogAdicionar(){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MenuPrincipalActivity.this);
         mBuilder.setTitle(R.string.dialog_title);
         mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
