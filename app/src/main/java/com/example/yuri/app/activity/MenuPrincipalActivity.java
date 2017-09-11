@@ -1,8 +1,6 @@
 package com.example.yuri.app.activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -39,20 +37,22 @@ import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.SearchResultListener;
 import ir.mirrajabi.searchdialog.core.Searchable;
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class MenuPrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
     private TextView mItemSelected;
     private String[] listItems;
-    private boolean[] checkedItems;
+    boolean[] checkedItems;
     private ArrayList<Integer> mUserItems = new ArrayList<>();
     private MaterialSearchView searchView;
     private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
 
-    private Database db = new Database(MenuPrincipalActivity.this);
-    private UsuarioDao usuarioDao = new UsuarioDao(MenuPrincipalActivity.this);
+    private SwipeRefreshLayout swipeRefreshLayout;
+    Database db = new Database(MenuPrincipalActivity.this);
+    UsuarioDao usuarioDao = new UsuarioDao(MenuPrincipalActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +93,15 @@ public class MenuPrincipalActivity extends AppCompatActivity
         mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
         mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
         mSlidingTabLayout.setViewPager(mViewPager);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipelayout);
+
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh,
+                R.color.refresh1,
+                R.color.refresh2
+        );
+
 
     }
 
@@ -142,13 +151,13 @@ public class MenuPrincipalActivity extends AppCompatActivity
     private void chamarBanco() {
 
         Usuario usuario2 = new Usuario("Wesley", "email@email.com", 55, 44, 996222010);
-        Log.i("142: ", "Insert 1");
+        Log.i("142: ","Insert 1");
         Usuario usuario3 = new Usuario("Ramos", "email@email.com", 55, 44, 996222010);
-        Log.i("142: ", "Insert 2");
+        Log.i("142: ","Insert 2");
         usuarioDao.adicionarUsuario(usuario2);
-        Log.i("142: ", "Insert 1 - A");
+        Log.i("142: ","Insert 1 - A");
         usuarioDao.adicionarUsuario(usuario3);
-        Log.i("142: ", "Insert 2 - A");
+        Log.i("142: ","Insert 2 - A");
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -178,16 +187,16 @@ public class MenuPrincipalActivity extends AppCompatActivity
         return true;
     }
 
-    public void listarUsuarios() {
+    public void listarUsuarios(){
         chamarBanco();
         List<Usuario> usuarios = usuarioDao.listaTodosUsuarios();
-        for (Usuario u : usuarios) {
+        for (Usuario u : usuarios){
             Log.d("Lista:", "\nID: " + u.getId() + " NOME: " + u.getNome());
         }
 
     }
 
-    public void abrirDialogAdicionar() {
+    public void abrirDialogAdicionar(){
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MenuPrincipalActivity.this);
         mBuilder.setTitle(R.string.dialog_title);
         mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
@@ -237,7 +246,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
         mDialog.show();
     }
 
-    public void abrirSearch() {
+    public void abrirSearch(){
         new SimpleSearchDialogCompat(MenuPrincipalActivity.this,
                 "Pesquisar",
                 "Digite aqui o que está procurando...",
@@ -246,14 +255,20 @@ public class MenuPrincipalActivity extends AppCompatActivity
                 new SearchResultListener<Searchable>() {
                     @Override
                     public void onSelected(BaseSearchDialogCompat baseSearchDialogCompat, Searchable searchable, int i) {
-                        Mensagem.toastShort(MenuPrincipalActivity.this, "" + searchable.getTitle());
+                        Mensagem.toastShort(MenuPrincipalActivity.this, ""+searchable.getTitle());
                         baseSearchDialogCompat.dismiss();
                     }
                 }).show();
-    }
+       }
 
-    public void abrirNovaIntent(Context contextThis){
-        Intent intent = new Intent(contextThis, ReceitaIndividualActivity.class);
-        startActivity(intent);
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+                mItemSelected.setText("Teste");
+            }
+        }, 3000);
     }
 }
