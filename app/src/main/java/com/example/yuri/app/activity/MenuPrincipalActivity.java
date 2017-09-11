@@ -37,9 +37,10 @@ import ir.mirrajabi.searchdialog.SimpleSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.BaseSearchDialogCompat;
 import ir.mirrajabi.searchdialog.core.SearchResultListener;
 import ir.mirrajabi.searchdialog.core.Searchable;
+import me.drakeet.materialdialog.MaterialDialog;
 
 public class MenuPrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
     private TextView mItemSelected;
     private String[] listItems;
@@ -49,6 +50,7 @@ public class MenuPrincipalActivity extends AppCompatActivity
     private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
 
+    private SwipeRefreshLayout swipeRefreshLayout;
     Database db = new Database(MenuPrincipalActivity.this);
     UsuarioDao usuarioDao = new UsuarioDao(MenuPrincipalActivity.this);
 
@@ -91,6 +93,15 @@ public class MenuPrincipalActivity extends AppCompatActivity
         mSlidingTabLayout.setSelectedIndicatorColors(getResources().getColor(R.color.colorAccent));
         mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
         mSlidingTabLayout.setViewPager(mViewPager);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipelayout);
+
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh,
+                R.color.refresh1,
+                R.color.refresh2
+        );
+
 
     }
 
@@ -249,4 +260,15 @@ public class MenuPrincipalActivity extends AppCompatActivity
                     }
                 }).show();
        }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+                mItemSelected.setText("Teste");
+            }
+        }, 3000);
+    }
 }
