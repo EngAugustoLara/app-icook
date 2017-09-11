@@ -2,11 +2,13 @@ package com.example.yuri.app.fragment;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 
@@ -16,6 +18,7 @@ import com.example.yuri.app.expandableRecycler.Constant;
 import com.example.yuri.app.expandableRecycler.SubTitle;
 import com.example.yuri.app.expandableRecycler.Title;
 import com.example.yuri.app.model.TwoFragmentItem;
+import com.example.yuri.app.util.Mensagem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +32,11 @@ public class TwoFragment extends Fragment {
     private String names[] = Constant.name;
     private String subNames[] = Constant.subName;
     private RatingBar avaliacao;
+    private Context context;
 
 
-    public TwoFragment() {
+    public TwoFragment(Context context) {
+        this.context = context;
         // Required empty public constructor
     }
 
@@ -70,7 +75,12 @@ public class TwoFragment extends Fragment {
 
         ListView lista = (ListView) view.findViewById(R.id.lista);
         List<TwoFragmentItem> twoFragmentItems = preencherList();
-        AdapterTwoFragmentPersonalizadoAdapter adapter = new AdapterTwoFragmentPersonalizadoAdapter((Activity) view.getContext(), twoFragmentItems);
+
+        AdapterTwoFragmentPersonalizadoAdapter adapter = new AdapterTwoFragmentPersonalizadoAdapter(
+                (Activity) view.getContext(),
+                twoFragmentItems
+        );
+
         lista.setAdapter(adapter);
 
 

@@ -23,6 +23,15 @@
         </activity>
         <activity android:name=".activity.SelecionarIngredientesActivity" />
         <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.ReceitaIndividualActivity"
+            android:label="@string/title_activity_receita_individual"
+            android:parentActivityName=".activity.MenuPrincipalActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.yuri.app.activity.MenuPrincipalActivity" />
+        </activity>
     </application>
 
 </manifest>

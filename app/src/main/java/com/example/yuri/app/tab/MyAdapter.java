@@ -40,7 +40,7 @@ public class MyAdapter extends FragmentPagerAdapter {
         if(position ==0){
             frag = new OneFragment();
         }else if(position == 1){
-            frag = new TwoFragment();
+            frag = new TwoFragment(this.mContext);
         }else if(position == 2){
             frag = new ThreeFragment();
         }else if(position == 3){

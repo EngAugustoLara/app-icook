@@ -2,6 +2,7 @@ package com.example.yuri.app.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.yuri.app.R;
 import com.example.yuri.app.activity.MenuPrincipalActivity;
+import com.example.yuri.app.activity.ReceitaIndividualActivity;
 import com.example.yuri.app.model.TwoFragmentItem;
 
 import java.util.List;
@@ -23,10 +25,20 @@ public class AdapterTwoFragmentPersonalizadoAdapter extends BaseAdapter {
     private final List<TwoFragmentItem> twoFragmentItemList;
     private Activity activity;
     private Context pContext;
+    private long idSelecionado;
+
 
     public AdapterTwoFragmentPersonalizadoAdapter(Activity activity, List<TwoFragmentItem> twoFragmentItemList) {
         this.twoFragmentItemList = twoFragmentItemList;
         this.activity = activity;
+    }
+
+    public long getIdSelecionado() {
+        return idSelecionado;
+    }
+
+    public void setIdSelecionado(long posicaoSelecionada) {
+        this.idSelecionado = posicaoSelecionada;
     }
 
     @Override
@@ -60,22 +72,24 @@ public class AdapterTwoFragmentPersonalizadoAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (position == 0){
-                    imagem.setImageResource(R.drawable.ic_keyboard_arrow_right_black_24dp);
-                }
+                Intent intent = new Intent(activity.getBaseContext(), ReceitaIndividualActivity.class);
+                setIdSelecionado(getItemId(position));
+                activity.startActivity(intent);
             }
         });
 
 
 
         if (nome.getText() == "Java" ){
-            imagem.setImageResource(R.drawable.deletetext);
+            imagem.setImageResource(R.drawable.exemploimagem);
         } else if (nome.getText() == "HTML e CSS"){
-            imagem.setImageResource(R.drawable.deletetext);
+            imagem.setImageResource(R.drawable.exemploimagem);
         } else if (nome.getText() == "Android"){
-            imagem.setImageResource(R.drawable.deletetext);
+            imagem.setImageResource(R.drawable.exemploimagem);
         }
 
         return view;
     }
+
+
 }
