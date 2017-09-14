@@ -32,4 +32,14 @@
         );
     </string>
 
+    <string name="CREATE_TABLE_IF_NOT_EXISTS_TABELA_CONFIGURACOES_TELAS">
+        CREATE TABLE IF NOT EXISTS TABELA_CONFIGURACOES_TELAS
+        (
+            ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            ID_TELA INTEGER NOT NULL,
+            NOME_TELA VARCHAR(50) NOT NULL,
+            STATUS_TELA_ACESSADA boolean DEFAULT 1
+        );
+    </string>
+
 </resources>

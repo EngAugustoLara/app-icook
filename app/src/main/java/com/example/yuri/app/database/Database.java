@@ -27,6 +27,7 @@ public class Database extends SQLiteOpenHelper {
             db.execSQL(ManipulacaoString.getStringResource(mContext, R.string.CREATE_TABLE_IF_NOT_EXISTS_TABELA_USUARIO));
             db.execSQL(ManipulacaoString.getStringResource(mContext, R.string.CREATE_TABLE_IF_NOT_EXISTS_TABELA_RECEITAS));
             db.execSQL(ManipulacaoString.getStringResource(mContext, R.string.CREATE_TABLE_IF_NOT_EXISTS_TABELA_INGREDIENTES));
+            db.execSQL(ManipulacaoString.getStringResource(mContext, R.string.CREATE_TABLE_IF_NOT_EXISTS_TABELA_CONFIGURACOES_TELAS));
         }catch (Exception e){
             Log.e("DBHelper.onCreate()", e.getMessage());
         }
