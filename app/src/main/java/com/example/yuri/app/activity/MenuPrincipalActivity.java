@@ -1,6 +1,7 @@
 package com.example.yuri.app.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.example.yuri.app.R;
 import com.example.yuri.app.dao.UsuarioDao;
 import com.example.yuri.app.database.Database;
+import com.example.yuri.app.model.ResultadoBusca;
 import com.example.yuri.app.model.Search;
 import com.example.yuri.app.model.Usuario;
 import com.example.yuri.app.tab.MyAdapter;
@@ -40,7 +42,7 @@ import ir.mirrajabi.searchdialog.core.Searchable;
 import me.drakeet.materialdialog.MaterialDialog;
 
 public class MenuPrincipalActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView mItemSelected;
     private String[] listItems;
@@ -50,7 +52,6 @@ public class MenuPrincipalActivity extends AppCompatActivity
     private SlidingTabLayout mSlidingTabLayout;
     private ViewPager mViewPager;
 
-    private SwipeRefreshLayout swipeRefreshLayout;
     Database db = new Database(MenuPrincipalActivity.this);
     UsuarioDao usuarioDao = new UsuarioDao(MenuPrincipalActivity.this);
 
@@ -94,19 +95,12 @@ public class MenuPrincipalActivity extends AppCompatActivity
         mSlidingTabLayout.setCustomTabView(R.layout.tab_view, R.id.tv_tab);
         mSlidingTabLayout.setViewPager(mViewPager);
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipelayout);
-
-        swipeRefreshLayout.setColorSchemeResources(
-                R.color.refresh,
-                R.color.refresh1,
-                R.color.refresh2
-        );
-
-
     }
 
-    private ArrayList<Search> initData() {
+    private ArrayList<Search> initData(ResultadoBusca resultadoBusca) {
         ArrayList<Search> items = new ArrayList<>();
+
+
         items.add(new Search("Wesley"));
         items.add(new Search("Rodrigues"));
         items.add(new Search("Ramos"));
@@ -247,28 +241,28 @@ public class MenuPrincipalActivity extends AppCompatActivity
     }
 
     public void abrirSearch(){
+        ResultadoBusca resultadoBusca = new ResultadoBusca(1, "Teste");
         new SimpleSearchDialogCompat(MenuPrincipalActivity.this,
                 "Pesquisar",
                 "Digite aqui o que está procurando...",
                 null,
-                initData(),
+                initData(resultadoBusca),
                 new SearchResultListener<Searchable>() {
                     @Override
                     public void onSelected(BaseSearchDialogCompat baseSearchDialogCompat, Searchable searchable, int i) {
-                        Mensagem.toastShort(MenuPrincipalActivity.this, ""+searchable.getTitle());
+
+                        /*
+                        * Teste de definição por titulo de busca;
+                        * */
+
+                        if (searchable.getTitle().equalsIgnoreCase("WESLEY")) {
+                            startActivity(new Intent(MenuPrincipalActivity.this, ReceitaIndividualActivity.class));
+                        } else {
+                            Mensagem.toastShort(MenuPrincipalActivity.this, "" + searchable.getTitle());
+                        }
                         baseSearchDialogCompat.dismiss();
                     }
                 }).show();
        }
 
-    @Override
-    public void onRefresh() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(false);
-                mItemSelected.setText("Teste");
-            }
-        }, 3000);
-    }
 }

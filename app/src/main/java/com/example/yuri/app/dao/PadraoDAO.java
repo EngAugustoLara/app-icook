@@ -101,7 +101,6 @@ public class PadraoDAO {
      * @param pDataBase             Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @param pForcaFechamentoBanco TRUE - Fecha o banco que foi passado por parâmetro<br />FALSE - Não fecha o banco que foi passado por parâmetro.
      * @return TRUE - A exclusão foi concluída com sucesso. <br /> FALSE - Os dados não foram excluidos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean delete(String pWhereClausulas, String[] pWhereArgumentos, SQLiteDatabase pDataBase, boolean pForcaFechamentoBanco) {
         boolean retorno = false;
@@ -123,7 +122,6 @@ public class PadraoDAO {
      *
      * @param pDataBase Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - A exclusão foi concluída com sucesso. <br /> FALSE - Os dados não foram excluidos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean deleteAll(SQLiteDatabase pDataBase) {
         return deleteAll(pDataBase, true);
@@ -135,7 +133,6 @@ public class PadraoDAO {
      * @param pDataBase             Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @param pForcaFechamentoBanco TRUE - Fecha o banco que foi passado por parâmetro<br />FALSE - Não fecha o banco que foi passado por parâmetro.
      * @return TRUE - A exclusão foi concluída com sucesso. <br /> FALSE - Os dados não foram excluidos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean deleteAll(SQLiteDatabase pDataBase, boolean pForcaFechamentoBanco) {
         boolean retorno = false;
@@ -164,7 +161,6 @@ public class PadraoDAO {
      *                         Todos os registro da tabela que conter esse(s) valor(es) serão atualizados. A sequêcia dos valores do vetor é a mesma das colunas do atributo 'pClausulasWhere'.
      * @param pDataBase        Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - A atualização foi concluída com sucesso. <br /> FALSE - Os dados não foram atualizados, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean update(ContentValues pContentValues, String pClausulasWhere, String[] pArgumentosWhere, SQLiteDatabase pDataBase) {
         return update(pContentValues, pClausulasWhere, pArgumentosWhere, pDataBase, true);
@@ -197,7 +193,6 @@ public class PadraoDAO {
      * @param pDataBase             Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @param pForcaFechamentoBanco TRUE - Fecha o banco que foi passado por parâmetro<br />FALSE - Não fecha o banco que foi passado por parâmetro.
      * @return TRUE - A atualização foi concluída com sucesso. <br /> FALSE - Os dados não foram atualizados, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean update(ContentValues pContentValues, String pClausulasWhere, String[] pArgumentosWhere, SQLiteDatabase pDataBase, boolean pForcaFechamentoBanco) {
         return updateInt(pContentValues, pClausulasWhere, pArgumentosWhere, pDataBase, pForcaFechamentoBanco) > 0;
