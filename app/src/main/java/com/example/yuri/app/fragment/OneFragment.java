@@ -44,13 +44,6 @@ public class OneFragment extends Fragment implements SwipeRefreshLayout.OnRefres
             public void onClick(View view) {
                 ConfiguracoesTelaDAO configuracoesTelaDAO = new ConfiguracoesTelaDAO(view.getContext());
                 TelaConfiguracoes telaConfiguracoes = configuracoesTelaDAO.get(R.id.telaApresentacao);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
-
-        swipeRefreshLayout.setColorSchemeResources(
-                R.color.refresh,
-                R.color.refresh1,
-                R.color.refresh2
-        );
 
                 Log.d("Objeto telaConfigurações: ", ""
                         +telaConfiguracoes.getId()+", "
@@ -63,6 +56,13 @@ public class OneFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                 startActivity(intent);
             }
         });
+
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipelayout);
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.refresh,
+                R.color.refresh1,
+                R.color.refresh2
+        );
 
         return view;
     }

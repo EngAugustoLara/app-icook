@@ -14,10 +14,12 @@ import com.example.yuri.app.model.TelaConfiguracoes;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Log.d("Chegou","MainActivity");
         try{
             ValidaVisualizacaoActvityEntradaController validaVisualizacaoActvityEntradaController =
                     new ValidaVisualizacaoActvityEntradaController(MainActivity.this);

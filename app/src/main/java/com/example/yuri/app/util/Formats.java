@@ -44,13 +44,6 @@ public class Formats {
 
     public static final NumberFormat df = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
 
-    public static final DecimalFormat dfMilhar = new DecimalFormat(Constantes.FORMATO_MOEDA_DUAS_CASAS_DECIMAIS);
-
-    public static final DecimalFormat dfMilharTresCasas = new DecimalFormat(Constantes.FORMATO_MOEDA_TRES_CASAS_DECIMAIS);
-
-    public static final DecimalFormat dfMilharQuatroCasas = new DecimalFormat(Constantes.FORMATO_MOEDA_QUATRO_CASAS_DECIMAIS);
-
-    public static final DecimalFormat dfMilharLocale = new DecimalFormat(Constantes.FORMATO_MOEDA_DUAS_CASAS_DECIMAIS);
 
     /**
      * Gera um SimpleDataFormat com um padrao "data no formato de banco de dados acompanhado da hora".

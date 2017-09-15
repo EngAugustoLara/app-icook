@@ -1,21 +1,27 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/swipelayout"
-    tools:context="com.example.yuri.app.fragment.OneFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+<android.support.v4.widget.SwipeRefreshLayout android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:id="@+id/swipelayout"
+xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
 
         <Button
-        android:layout_width="match_parent"
-        android:id="@+id/btnClicadoOne"
-        android:text="Clicado"
-        android:layout_height="50dp" />
+            android:id="@+id/btnClicadoOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/hello_blank_fragment" />
+
+
+    </LinearLayout>
+
 
 
 </android.support.v4.widget.SwipeRefreshLayout>
