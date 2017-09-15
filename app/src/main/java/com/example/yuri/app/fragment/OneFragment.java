@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.yuri.app.R;
 import com.example.yuri.app.activity.EntradaAppActivity;
@@ -18,6 +19,8 @@ import com.example.yuri.app.activity.MainActivity;
 import com.example.yuri.app.controller.ValidaVisualizacaoActvityEntradaController;
 import com.example.yuri.app.dao.ConfiguracoesTelaDAO;
 import com.example.yuri.app.model.TelaConfiguracoes;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,22 +66,27 @@ public class OneFragment extends Fragment implements SwipeRefreshLayout.OnRefres
                 R.color.refresh1,
                 R.color.refresh2
         );
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         return view;
     }
 
     @Override
     public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(true);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 swipeRefreshLayout.setRefreshing(false);
-                atualizarFragmentOne();
+                atualizarFragmentOne(getView());
             }
         }, 2000);
     }
 
-    private void atualizarFragmentOne() {
+    private void atualizarFragmentOne(View view) {
+        TextView textView = view.findViewById(R.id.testetexto);
+        textView.setText("Deu Certo");
     }
+
 
 }
