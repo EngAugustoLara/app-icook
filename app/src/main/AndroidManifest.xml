@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MenuPrincipalActivity"
-            android:label="@string/title_activity_menu_principal"
+            android:name=".activity.MainActivity"
+
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,15 +23,23 @@
         </activity>
         <activity android:name=".activity.SelecionarIngredientesActivity" />
         <activity android:name=".activity.MainActivity" />
-        <activity
-            android:name=".activity.ReceitaIndividualActivity"
-            android:label="@string/title_activity_receita_individual"
-            android:parentActivityName=".activity.MenuPrincipalActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.yuri.app.activity.MenuPrincipalActivity" />
+        activity.MenuPrincipalActivity" />
         </activity>
+        <activity
+            android:name=".activity.MenuPrincipalActivity"
+            android:label="@string/title_activity_menu_principal"/>
+        <activity
+            android:name=".activity.EntradaAppActivity"
+            android:label="@string/title_activity_entrada_app"
+            android:theme="@style/AppTheme" />
+    <activity
+        android:name=".activity.ReceitaIndividualActivity"
+        android:label="@string/title_activity_receita_individual"
+        android:parentActivityName=".activity.MenuPrincipalActivity"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.yuri.app.
     </application>
 
 </manifest>

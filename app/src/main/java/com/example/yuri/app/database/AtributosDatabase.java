@@ -9,6 +9,7 @@ public class AtributosDatabase {
     public static class BancoDados{
         public static final String NOME_BANCO = "BANCOGERAL.DB";
         public static final Integer VERSAO_BANCO = 1;
+        public static final String CAMINHO = "/data/com.example.yuri.app/databases/";
     }
 
     public static class Usuario{
@@ -34,5 +35,13 @@ public class AtributosDatabase {
         public static final String COLUNA_NOME = "NOME";
         public static final String COLUNA_QUANTIDADE = "QUANTIDADE";
         public static final String COLUNA_UNIDADE_MEDIDA = "UNIDADE_MEDIDA";
+    }
+
+    public static class Configuracoes_tela{
+        public static final String NOME_TABELA = "TABELA_CONFIGURACOES_TELAS";
+        public static final String COLUNA_ID = "ID";
+        public static final String COLUNA_ID_TELA = "ID_TELA";
+        public static final String COLUNA_NOME_TELA = "NOME_TELA";
+        public static final String COLUNA_STATUS_TELA_ACESSADA = "STATUS_TELA_ACESSADA";
     }
 }

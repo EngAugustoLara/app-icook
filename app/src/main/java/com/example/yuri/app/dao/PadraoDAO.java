@@ -27,7 +27,6 @@ public class PadraoDAO {
      * @param pContentValues Objeto com os valores que serão inseridos e suas respectivas colunas. Essa objeto deve vir preenchidos com os valores que se deseja inserir.
      * @param pDataBase      Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - A inserção foi concluída com sucesso. <br /> FALSE - Os dados não foram inclusos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean insert(ContentValues pContentValues, SQLiteDatabase pDataBase) {
         return insert(pContentValues, pDataBase, true);
@@ -40,7 +39,6 @@ public class PadraoDAO {
      * @param pContentValues Objeto com os valores que serão inseridos e suas respectivas colunas. Essa objeto deve vir preenchidos com os valores que se deseja inserir.
      * @param pDatabase      Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - A inserção foi concluída com sucesso. <br /> FALSE - Os dados não foram inclusos, devido algum problema.
-     * @author Eduardo Gardin
      */
     protected Boolean insertOrUpdate(ContentValues pContentValues, String pClausulasWhere, String[] pArgumentosWhere, SQLiteDatabase pDatabase, Boolean pForcaFechamentoBanco) {
 
@@ -58,7 +56,6 @@ public class PadraoDAO {
      * @param pDataBase             Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @param pForcaFechamentoBanco TRUE - Fecha o banco que foi passado por parâmetro<br />FALSE - Não fecha o banco que foi passado por parâmetro.
      * @return TRUE - A inserção foi concluída com sucesso. <br /> FALSE - Os dados não foram inclusos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean insert(ContentValues pContentValues, SQLiteDatabase pDataBase, boolean pForcaFechamentoBanco) {
         boolean retorno = false;
@@ -85,7 +82,6 @@ public class PadraoDAO {
      *                         Todos os registro da tabela que conter esse(s) valor(es) serão apagados. A sequêcia dos valores do vetor é a mesma das colunas do atributo 'pWhereClausulas'.
      * @param pDataBase        Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - A exclusão foi concluída com sucesso. <br /> FALSE - Os dados não foram excluidos, devido algum problema.
-     * @author Douglas Scalizze
      */
     protected Boolean delete(String pWhereClausulas, String[] pWhereArgumentos, SQLiteDatabase pDataBase) {
         return delete(pWhereClausulas, pWhereArgumentos, pDataBase, true);
@@ -206,7 +202,6 @@ public class PadraoDAO {
      *                       Será verificado se existe algum registro com esse(s) valor(es). A sequêcia dos valores desse vetor é a mesma do atributo 'pWhereClauses'.
      * @param pDataBase      Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @return TRUE - Existe um registro com os valores indicados. <br /> FALSE - Não existe um registro com os valores indicados.
-     * @author Douglas Scalizze
      */
     protected boolean exists(String[] pWhereClauses, String[] pSelectionArgs, SQLiteDatabase pDataBase) {
         return exists(pWhereClauses, pSelectionArgs, pDataBase, true);
@@ -221,7 +216,6 @@ public class PadraoDAO {
      * @param pDataBase             Banco de dados utilizado para efetuar a operação.	Não pode ser nulo.
      * @param pForcaFechamentoBanco TRUE - Fecha o banco que foi passado por parâmetro<br />FALSE - Não fecha o banco que foi passado por parâmetro.
      * @return TRUE - Existe um registro com os valores indicados. <br /> FALSE - Não existe um registro com os valores indicados.
-     * @author Douglas Scalizze
      */
     protected boolean exists(String[] pWhereClauses, String[] pSelectionArgs, SQLiteDatabase pDataBase, boolean pForcaFechamentoBanco) {
         boolean retorno = false;
@@ -257,7 +251,6 @@ public class PadraoDAO {
      *
      * @param pWhereClauses Vetor com os nomes das colunas que deseja gerar o texto.
      * @return Texto com a(s) coluna(s) que estava(m) no vetor formatoda(s) adequadamente.
-     * @author Douglas Scalizze
      */
     private String getStringClauses(String[] pWhereClauses) {
         StringBuilder stringWhere = new StringBuilder();
@@ -287,7 +280,6 @@ public class PadraoDAO {
      *
      * @param pDataBase        Banco de dados que será verificado se está nulo ou não.
      * @param pForcaFechamento TRUE - Fecha o banco independente dos outros parâmetro<br />FALSE - Fecha o banco dependendo da situação do parâmetro "pDataBase".
-     * @author Douglas Scalizze
      */
     private void closeDataBase(SQLiteDatabase pDataBase, boolean pForcaFechamento) {
         if (pForcaFechamento) {
